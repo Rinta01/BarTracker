@@ -13,10 +13,10 @@ namespace BarTracker.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BarTrackerDBEntities1 : DbContext
+    public partial class BarTrackerDBEntities2 : DbContext
     {
-        public BarTrackerDBEntities1()
-            : base("name=BarTrackerDBEntities1")
+        public BarTrackerDBEntities2()
+            : base("name=BarTrackerDBEntities2")
         {
         }
     

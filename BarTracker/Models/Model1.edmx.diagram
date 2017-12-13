@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="741028132c144cc1a9c808ee337d0462" Name="Diagram1">
+      <Diagram DiagramId="a3d052ebdf294c8e943bc2ecc6642c97" Name="Diagram1">
         <EntityTypeShape EntityType="BarTrackerDBModel.Bars" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BarTrackerDBModel.BarsReviews" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BarTrackerDBModel.Users" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />

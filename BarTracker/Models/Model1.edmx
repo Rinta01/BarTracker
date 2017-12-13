@@ -81,7 +81,7 @@
           <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="UserBarID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="BarTrackerDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BarTrackerDBEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bars" EntityType="Self.Bars" />
           <EntitySet Name="BarsReviews" EntityType="Self.BarsReviews" />
           <EntitySet Name="Users" EntityType="Self.Users" />
@@ -91,7 +91,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище BarTrackerDBModelContainer" CdmEntityContainer="BarTrackerDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BarTrackerDBModelContainer" CdmEntityContainer="BarTrackerDBEntities2">
           <EntitySetMapping Name="Bars">
             <EntityTypeMapping TypeName="BarTrackerDBModel.Bars">
               <MappingFragment StoreEntitySet="Bars">

@@ -102,25 +102,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\BarTrackerDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BarTrackerDB.edmx</DependentUpon>
-      <LastGenOutput>BarTrackerDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\BarTrackerDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BarTrackerDB.edmx</DependentUpon>
-      <LastGenOutput>BarTrackerDB.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\BarTrackerDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BarTrackerDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\BarTrackerDB.edmx.diagram">
-      <DependentUpon>BarTrackerDB.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -136,31 +119,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Bars.cs">
-      <DependentUpon>BarTrackerDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BarsReviews.cs">
-      <DependentUpon>BarTrackerDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BarTrackerDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BarTrackerDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BarTrackerDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BarTrackerDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BarTrackerDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BarTrackerDB.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Users.cs">
-      <DependentUpon>BarTrackerDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +129,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\MyAccount\Login.cshtml" />
@@ -183,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
