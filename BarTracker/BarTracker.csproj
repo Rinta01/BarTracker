@@ -183,7 +183,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Bars.cs">
+    <Compile Include="Models\Bar.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BarTrackerModel.Context.cs">
@@ -202,13 +202,13 @@
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Rates.cs">
+    <Compile Include="Models\Rating.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Reviews.cs">
+    <Compile Include="Models\Review.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Users.cs">
+    <Compile Include="Models\User.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
