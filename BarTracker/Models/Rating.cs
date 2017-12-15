@@ -12,14 +12,13 @@ namespace BarTracker.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Rates
+    public partial class Rating
     {
-        public int RatesId { get; set; }
-        public int Rate { get; set; }
+        public int RatingId { get; set; }
+        public int RatingValue { get; set; }
         public int UserId { get; set; }
         public int BarId { get; set; }
     
-        public virtual Bars Bars { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual Bar Bar { get; set; }
     }
 }

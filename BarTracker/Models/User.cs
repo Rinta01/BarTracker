@@ -12,14 +12,20 @@ namespace BarTracker.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Reviews
+    public partial class User
     {
-        public int ReviewId { get; set; }
-        public string Review { get; set; }
-        public int UserId { get; set; }
-        public int BarId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Review = new HashSet<Review>();
+        }
     
-        public virtual Bars Bars { get; set; }
-        public virtual Users Users { get; set; }
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
     }
 }

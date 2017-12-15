@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище BarTrackerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Bars">
+      <Schema Namespace="Хранилище BarTrackerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bar">
           <Key>
             <PropertyRef Name="BarId" />
           </Key>
@@ -14,116 +14,99 @@
           <Property Name="Category" Type="nvarchar" MaxLength="50" />
           <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Rates">
+        <EntityType Name="Rating">
           <Key>
-            <PropertyRef Name="RatesId" />
+            <PropertyRef Name="RatingId" />
           </Key>
-          <Property Name="RatesId" Type="int" Nullable="false" />
-          <Property Name="Rate" Type="int" Nullable="false" />
+          <Property Name="RatingId" Type="int" Nullable="false" />
+          <Property Name="RatingValue" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="BarId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Reviews">
+        <EntityType Name="Review">
           <Key>
             <PropertyRef Name="ReviewId" />
           </Key>
           <Property Name="ReviewId" Type="int" Nullable="false" />
-          <Property Name="Review" Type="text" Nullable="false" />
+          <Property Name="ReviewContent" Type="text" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="BarId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Users">
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Userlogin" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Userpassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK_Rates_BarId">
-          <End Role="Bars" Type="Self.Bars" Multiplicity="1">
+        <Association Name="FK_Rating_BarId">
+          <End Role="Bar" Type="Self.Bar" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Rates" Type="Self.Rates" Multiplicity="*" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Bars">
+            <Principal Role="Bar">
               <PropertyRef Name="BarId" />
             </Principal>
-            <Dependent Role="Rates">
+            <Dependent Role="Rating">
               <PropertyRef Name="BarId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rates_UserId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Rates" Type="Self.Rates" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Rates">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reviews_BarId">
-          <End Role="Bars" Type="Self.Bars" Multiplicity="1">
+          <End Role="Bar" Type="Self.Bar" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Bars">
+            <Principal Role="Bar">
               <PropertyRef Name="BarId" />
             </Principal>
-            <Dependent Role="Reviews">
+            <Dependent Role="Review">
               <PropertyRef Name="BarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reviews_UserId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Reviews">
+            <Dependent Role="Review">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище BarTrackerDBModelContainer">
-          <EntitySet Name="Bars" EntityType="Self.Bars" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rates" EntityType="Self.Rates" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Rates_BarId" Association="Self.FK_Rates_BarId">
-            <End Role="Bars" EntitySet="Bars" />
-            <End Role="Rates" EntitySet="Rates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rates_UserId" Association="Self.FK_Rates_UserId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Rates" EntitySet="Rates" />
+          <EntitySet Name="Bar" EntityType="Self.Bar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Rating_BarId" Association="Self.FK_Rating_BarId">
+            <End Role="Bar" EntitySet="Bar" />
+            <End Role="Rating" EntitySet="Rating" />
           </AssociationSet>
           <AssociationSet Name="FK_Reviews_BarId" Association="Self.FK_Reviews_BarId">
-            <End Role="Bars" EntitySet="Bars" />
-            <End Role="Reviews" EntitySet="Reviews" />
+            <End Role="Bar" EntitySet="Bar" />
+            <End Role="Review" EntitySet="Review" />
           </AssociationSet>
           <AssociationSet Name="FK_Reviews_UserId" Association="Self.FK_Reviews_UserId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Reviews" EntitySet="Reviews" />
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BarTrackerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Bars">
+        <EntityType Name="Bar">
           <Key>
             <PropertyRef Name="BarId" />
           </Key>
@@ -131,129 +114,109 @@
           <Property Name="BarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Rates" Relationship="Self.FK_Rates_BarId" FromRole="Bars" ToRole="Rates" />
-          <NavigationProperty Name="Reviews" Relationship="BarTrackerDBModel.FK_Reviews_BarId" FromRole="Bars" ToRole="Reviews" />
+          <NavigationProperty Name="Rating" Relationship="Self.FK_Rating_BarId" FromRole="Bar" ToRole="Rating" />
+          <NavigationProperty Name="Review" Relationship="Self.FK_Reviews_BarId" FromRole="Bar" ToRole="Review" />
         </EntityType>
-        <EntityType Name="Rates">
+        <EntityType Name="Rating">
           <Key>
-            <PropertyRef Name="RatesId" />
+            <PropertyRef Name="RatingId" />
           </Key>
-          <Property Name="RatesId" Type="Int32" Nullable="false" />
-          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <Property Name="RatingId" Type="Int32" Nullable="false" />
+          <Property Name="RatingValue" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="BarId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bars" Relationship="Self.FK_Rates_BarId" FromRole="Rates" ToRole="Bars" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Rates_UserId" FromRole="Rates" ToRole="Users" />
+          <NavigationProperty Name="Bar" Relationship="Self.FK_Rating_BarId" FromRole="Rating" ToRole="Bar" />
         </EntityType>
-        <EntityType Name="Users">
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BarId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bar" Relationship="Self.FK_Reviews_BarId" FromRole="Review" ToRole="Bar" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Reviews_UserId" FromRole="Review" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Userlogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Userpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Rates" Relationship="Self.FK_Rates_UserId" FromRole="Users" ToRole="Rates" />
-          <NavigationProperty Name="Reviews" Relationship="BarTrackerDBModel.FK_Reviews_UserId" FromRole="Users" ToRole="Reviews" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Review" Relationship="Self.FK_Reviews_UserId" FromRole="User" ToRole="Review" />
         </EntityType>
-        <Association Name="FK_Rates_BarId">
-          <End Role="Bars" Type="Self.Bars" Multiplicity="1">
+        <Association Name="FK_Rating_BarId">
+          <End Role="Bar" Type="Self.Bar" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Rates" Type="Self.Rates" Multiplicity="*" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Bars">
+            <Principal Role="Bar">
               <PropertyRef Name="BarId" />
             </Principal>
-            <Dependent Role="Rates">
+            <Dependent Role="Rating">
               <PropertyRef Name="BarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Rates_UserId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Rates" Type="Self.Rates" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Rates">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="BarTrackerDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Bars" EntityType="Self.Bars" />
-          <EntitySet Name="Rates" EntityType="Self.Rates" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_Rates_BarId" Association="Self.FK_Rates_BarId">
-            <End Role="Bars" EntitySet="Bars" />
-            <End Role="Rates" EntitySet="Rates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rates_UserId" Association="Self.FK_Rates_UserId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Rates" EntitySet="Rates" />
-          </AssociationSet>
-          <EntitySet Name="Reviews" EntityType="BarTrackerDBModel.Reviews" />
-          <AssociationSet Name="FK_Reviews_BarId" Association="BarTrackerDBModel.FK_Reviews_BarId">
-            <End Role="Bars" EntitySet="Bars" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reviews_UserId" Association="BarTrackerDBModel.FK_Reviews_UserId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Reviews">
-          <Key>
-            <PropertyRef Name="ReviewId" />
-          </Key>
-          <Property Name="ReviewId" Type="Int32" Nullable="false" />
-          <Property Name="Review" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="BarId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bars" Relationship="BarTrackerDBModel.FK_Reviews_BarId" FromRole="Reviews" ToRole="Bars" />
-          <NavigationProperty Name="Users" Relationship="BarTrackerDBModel.FK_Reviews_UserId" FromRole="Reviews" ToRole="Users" />
-        </EntityType>
         <Association Name="FK_Reviews_BarId">
-          <End Type="BarTrackerDBModel.Bars" Role="Bars" Multiplicity="1">
+          <End Role="Bar" Type="Self.Bar" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="BarTrackerDBModel.Reviews" Role="Reviews" Multiplicity="*" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Bars">
+            <Principal Role="Bar">
               <PropertyRef Name="BarId" />
             </Principal>
-            <Dependent Role="Reviews">
+            <Dependent Role="Review">
               <PropertyRef Name="BarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reviews_UserId">
-          <End Type="BarTrackerDBModel.Users" Role="Users" Multiplicity="1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="BarTrackerDBModel.Reviews" Role="Reviews" Multiplicity="*" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Reviews">
+            <Dependent Role="Review">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="BarTrackerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bar" EntityType="Self.Bar" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" />
+          <EntitySet Name="Review" EntityType="Self.Review" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Rating_BarId" Association="Self.FK_Rating_BarId">
+            <End Role="Bar" EntitySet="Bar" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_BarId" Association="Self.FK_Reviews_BarId">
+            <End Role="Bar" EntitySet="Bar" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_UserId" Association="Self.FK_Reviews_UserId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище BarTrackerDBModelContainer" CdmEntityContainer="BarTrackerDBEntities">
-          <EntitySetMapping Name="Bars">
-            <EntityTypeMapping TypeName="BarTrackerDBModel.Bars">
-              <MappingFragment StoreEntitySet="Bars">
+          <EntitySetMapping Name="Bar">
+            <EntityTypeMapping TypeName="BarTrackerDBModel.Bar">
+              <MappingFragment StoreEntitySet="Bar">
                 <ScalarProperty Name="BarId" ColumnName="BarId" />
                 <ScalarProperty Name="BarName" ColumnName="BarName" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -261,33 +224,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Rates">
-            <EntityTypeMapping TypeName="BarTrackerDBModel.Rates">
-              <MappingFragment StoreEntitySet="Rates">
-                <ScalarProperty Name="RatesId" ColumnName="RatesId" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <EntitySetMapping Name="Rating">
+            <EntityTypeMapping TypeName="BarTrackerDBModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+                <ScalarProperty Name="RatingValue" ColumnName="RatingValue" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="BarId" ColumnName="BarId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="BarTrackerDBModel.Users">
-              <MappingFragment StoreEntitySet="Users">
+          <EntitySetMapping Name="Review">
+            <EntityTypeMapping TypeName="BarTrackerDBModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+                <ScalarProperty Name="ReviewContent" ColumnName="ReviewContent" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BarId" ColumnName="BarId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="BarTrackerDBModel.User">
+              <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Userlogin" ColumnName="Userlogin" />
-                <ScalarProperty Name="Userpassword" ColumnName="Userpassword" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Reviews">
-            <EntityTypeMapping TypeName="BarTrackerDBModel.Reviews">
-              <MappingFragment StoreEntitySet="Reviews">
-                <ScalarProperty Name="BarId" ColumnName="BarId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Review" ColumnName="Review" />
-                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

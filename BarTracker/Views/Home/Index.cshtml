@@ -1,6 +1,6 @@
-﻿
-@{
-    ViewBag.Title = "Index"; 
+﻿@model BarTracker.Models.User
+    @{
+    ViewBag.Title = "Index";
 }
 
 <!DOCTYPE html>
@@ -42,20 +42,20 @@
                         <input class="text" type="password" placeholder="" />
                     </div>
                     <div class="input">
-                        <input type="submit" value="ENTER" />
+                        <input type="submit" name="SingInBtn" value="ENTER" />
                     </div>
                 </div>
                 <div class="page signup">
                     <div class="input">
-                        <div class="title"><i class="material-icons">person</i> NAME</div>
-                        <input class="text" type="text" placeholder="" />
+                        <div class="title" ><i class="material-icons">person</i> USERNAME </div>
+                        <input class="text" type="text" placeholder="" name="LoginBox"/>
                     </div>
                     <div class="input">
-                        <div class="title"><i class="material-icons">markunread_mailbox</i> EMAIL</div>
-                        <input class="text" type="password" placeholder="" />
+                        <div class="title"><i class="material-icons">markunread_mailbox</i> PASSOWRD </div>
+                        <input class="text" type="password" placeholder="" name="PasswordBox" />
                     </div>
                     <div class="input">
-                        <input type="submit" value="SIGN ME UP!" />
+                        <input type="submit" name="RegisterBtn" value="SIGN ME UP!" />
                     </div>
                 </div>
             </div>
@@ -99,7 +99,6 @@
     <span class="content1">
         Or just click on the icon
     </span>
-
 </body>
 </html>
 

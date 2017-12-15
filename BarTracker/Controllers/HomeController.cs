@@ -13,5 +13,9 @@ namespace BarTracker.Controllers
         {
             return View();
         }
+        public ActionResult Login(string LoginBox, string PasswordBox)
+        {
+            return View();
+        }
     }
 }

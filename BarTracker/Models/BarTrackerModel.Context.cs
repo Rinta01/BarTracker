@@ -25,9 +25,9 @@ namespace BarTracker.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bars> Bars { get; set; }
-        public virtual DbSet<Rates> Rates { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Reviews> Reviews { get; set; }
+        public virtual DbSet<Bar> Bar { get; set; }
+        public virtual DbSet<Rating> Rating { get; set; }
+        public virtual DbSet<Review> Review { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }
