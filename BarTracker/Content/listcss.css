@@ -17,7 +17,6 @@ body{
 .signin img{
     max-width: 255px;
     float: right;
-    margin-right: 0%;
     
 }
 
@@ -30,7 +29,7 @@ body{
 }
 
 .sorting {
-    margin-left: 33%;
+    margin-left: 25%;
     
 }
 
@@ -40,14 +39,10 @@ body{
   margin-left: 5%;
   width: 63vw;
   height: auto;
-  padding: 30px;
+  padding: 20px;
   background-color: white;
   border-radius: 3px;
   visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-  cursor: auto;
-  transform: scale(1);
   transition: transform 50ms;
     
 }
@@ -75,7 +70,7 @@ body{
 
 
 .name {
-    font-size: 23px;
+    font-size: 24px;
 }
 
 .comment_content {
@@ -92,6 +87,40 @@ body{
     border-color: #50D09D;
     transition: 0.2s;
     align-content: center;
-    
     }
-.button_read_more:focus { background: #50D09D; color: white}
+.button_read_more:hover { background: #50D09D; color: white}
+
+.h {
+    display: inline-flex;
+    align-items: center;
+    
+}
+
+.sorting .rating {
+    color: #50D09D;
+    font-weight: 700;
+    padding: .5em 2em;
+    outline: none;
+    border-radius: 9px;
+    border-color: white;
+    transition: 0.2s;
+    align-content: center;
+}
+.sorting .rating:focus { border: 2px solid; border-color: #50D09D;}
+.sorting .date {
+    color: #50D09D;
+    font-weight: 700;
+    padding: .5em 2em;
+    outline: none;
+    border-radius: 9px;
+    border-color: white;
+    transition: 0.2s;
+    align-content: center;
+}
+
+.sorting .date:focus { border: 2px solid; border-color: #50D09D;}
+
+.email {
+    
+    
+}

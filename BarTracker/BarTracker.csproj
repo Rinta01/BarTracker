@@ -118,10 +118,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\auth.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\listcss.css" />
     <Content Include="Content\main.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -133,7 +135,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\listcss.css" />
     <Content Include="Models\BarTrackerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
@@ -144,7 +145,6 @@
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
       <LastGenOutput>BarTrackerModel.cs</LastGenOutput>
     </Content>
-    <Content Include="screenshots\Sadly.docx" />
     <EntityDeploy Include="Models\BarTrackerModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BarTrackerModel.Designer.cs</LastGenOutput>
@@ -156,6 +156,8 @@
     <Content Include="screenshots\London.png" />
     <Content Include="screenshots\quick-edit.png" />
     <Content Include="screenshots\sign_in.png" />
+    <Content Include="screenshots\sign_up.png" />
+    <Content Include="screenshots\Star.png" />
     <Content Include="screenshots\амстер.png" />
     <Content Include="screenshots\барселона.png" />
     <Content Include="screenshots\берлин.png" />
@@ -173,7 +175,6 @@
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Home\list.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -222,6 +223,8 @@
     <Content Include="Views\MyAccount\Login.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Home\list.cshtml" />
+    <Content Include="Views\Home\auth.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

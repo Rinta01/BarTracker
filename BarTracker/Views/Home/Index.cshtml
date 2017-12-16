@@ -18,69 +18,22 @@
 <body>
 
     <div class="container">
-        <input id="modal" type="checkbox">
-
-        <label for="modal">
-            <span class=sign_in href="#modal">
+            <a class=sign_in href="~/Views/Home/auth.cshtml">
                 <img src="~/screenshots/sign_in.png" />
-            </span>
-        </label>
-        <label class="modal-background" for="modal"></label>
-        <div class="modal-content">
-            <label class="modal-close" for="modal">&#10005;</label>
-
-            <input type="radio" name="tab" id="signin" checked="checked" />
-            <input type="radio" name="tab" id="register" />
-            <div class="pages">
-                <div class="page">
-                    <div class="input">
-                        <div class="title"><i class="material-icons">account_box</i> USERNAME</div>
-                        <input class="text" type="text" placeholder="" />
-                    </div>
-                    <div class="input">
-                        <div class="title"><i class="material-icons">lock</i> PASSWORD</div>
-                        <input class="text" type="password" placeholder="" />
-                    </div>
-                    <div class="input">
-                        <input type="submit" name="SingInBtn" value="ENTER" />
-                    </div>
-                </div>
-                <div class="page signup">
-                    <div class="input">
-                        <div class="title" ><i class="material-icons">person</i> USERNAME </div>
-                        <input class="text" type="text" placeholder="" name="LoginBox"/>
-                    </div>
-                    <div class="input">
-                        <div class="title"><i class="material-icons">markunread_mailbox</i> PASSOWRD </div>
-                        <input class="text" type="password" placeholder="" name="PasswordBox" />
-                    </div>
-                    <div class="input">
-                        <input type="submit" name="RegisterBtn" value="SIGN ME UP!" />
-                    </div>
-                </div>
-            </div>
-            <div class="tabs">
-                <label class="tab" for="signin">
-                    <div class="text">Sign In</div>
-                </label>
-                <label class="tab" for="register">
-                    <div class="text">Register</div>
-                </label>
-            </div>
-        </div>
+            </a>
     </div>
 
-    <span class="amster" href="">
+    <a class="amster" href="~/Views/Home/list.cshtml">
         <img src="~/screenshots/амстер.png" />
-    </span>
+    </a>
 
-    <span class="barcelona" href="">
+    <a class="barcelona" href="~/Views/Home/list.cshtml">
         <img src="~/screenshots/барселона.png" />
-    </span>
+    </a>
 
-    <span class="berlin" href="">
+    <a class="berlin" href="~/Views/Home/list.cshtml">
         <img src="~/screenshots/берлин.png" />
-    </span>
+    </a>
 
     <div class="content">
         Choose the city which is interesting for you:
@@ -90,15 +43,15 @@
         <input type="submit" class="search1" value="Search">
     </p>
 
-    <span class="welington" href="">
+    <a class="welington" href="~/Views/Home/list.cshtml">
         <img src="~/screenshots/велингтон.png">
-    </span>
-    <span class="dublin" href="">
+    </a>
+    <a class="dublin" href="~/Views/Home/list.cshtml">
         <img src="~/screenshots/дублин.png">
-    </span>
-    <span class="content1">
+    </a>
+    <a class="content1">
         Or just click on the icon
-    </span>
+    </a>
 </body>
 </html>
 

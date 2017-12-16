@@ -17,5 +17,15 @@ namespace BarTracker.Controllers
         {
             return View();
         }
+        public ActionResult list()
+        {
+            return View();
+        }
+
+        public ActionResult auth()
+        {
+            return View();
+        }
+
     }
 }
