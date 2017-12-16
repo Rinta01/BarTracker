@@ -5,13 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="771346a1dcf746299780a8e45be5822e" Name="Diagram1">
-        <EntityTypeShape EntityType="BarTrackerDBModel.Bar" Width="1.5" PointX="0.625" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarTrackerDBModel.Bar" Width="1.5" PointX="0.625" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BarTrackerDBModel.Rating" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BarTrackerDBModel.Review" Width="1.5" PointX="2.875" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BarTrackerDBModel.User" Width="1.5" PointX="7" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="BarTrackerDBModel.FK_Rating_BarId" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="BarTrackerDBModel.FK_Rating_BarId" />
         <AssociationConnector Association="BarTrackerDBModel.FK_Reviews_BarId" ManuallyRouted="false" />
         <AssociationConnector Association="BarTrackerDBModel.FK_Reviews_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BarTrackerDBModel.FK_Rating_BarId1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

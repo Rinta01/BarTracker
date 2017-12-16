@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище BarTrackerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище BarTrackerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bar">
           <Key>
             <PropertyRef Name="BarId" />
@@ -101,8 +101,7 @@
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BarTrackerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -124,7 +123,7 @@
           <Property Name="RatingId" Type="Int32" Nullable="false" />
           <Property Name="RatingValue" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="BarId" Type="Int32" Nullable="false" />
+          <Property Name="BarId" Nullable="false" Type="Int32" />
           <NavigationProperty Name="Bar" Relationship="Self.FK_Rating_BarId" FromRole="Rating" ToRole="Bar" />
         </EntityType>
         <EntityType Name="Review">
@@ -149,10 +148,10 @@
           <NavigationProperty Name="Review" Relationship="Self.FK_Reviews_UserId" FromRole="User" ToRole="Review" />
         </EntityType>
         <Association Name="FK_Rating_BarId">
-          <End Role="Bar" Type="Self.Bar" Multiplicity="1">
+          <End Type="Self.Bar" Multiplicity="1" Role="Bar">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <End Type="Self.Rating" Multiplicity="*" Role="Rating" />
           <ReferentialConstraint>
             <Principal Role="Bar">
               <PropertyRef Name="BarId" />
@@ -196,8 +195,8 @@
           <EntitySet Name="Review" EntityType="Self.Review" />
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Rating_BarId" Association="Self.FK_Rating_BarId">
-            <End Role="Bar" EntitySet="Bar" />
-            <End Role="Rating" EntitySet="Rating" />
+            <End EntitySet="Bar" Role="Bar" />
+            <End EntitySet="Rating" Role="Rating" />
           </AssociationSet>
           <AssociationSet Name="FK_Reviews_BarId" Association="Self.FK_Reviews_BarId">
             <End Role="Bar" EntitySet="Bar" />
@@ -207,7 +206,25 @@
             <End Role="User" EntitySet="User" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
+          <AssociationSet Name="FK_Rating_BarId1" Association="BarTrackerDBModel.FK_Rating_BarId1">
+            <End Role="Bar" EntitySet="Bar" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Rating_BarId1">
+          <End Type="BarTrackerDBModel.Bar" Role="Bar" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BarTrackerDBModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bar">
+              <PropertyRef Name="BarId" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="BarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

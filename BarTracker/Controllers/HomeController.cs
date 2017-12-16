@@ -9,11 +9,14 @@ namespace BarTracker.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Login(string LoginBox, string PasswordBox)
+        
+        [Authorize]
+        public ActionResult MyProfile()
         {
             return View();
         }

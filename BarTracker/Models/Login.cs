@@ -13,7 +13,7 @@ namespace BarTracker.Models
         [Required(ErrorMessage = "Password required.", AllowEmptyStrings = false)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public bool RememberMe { get; set; }
+        public string Email { get; set; }
     }
 
 }
