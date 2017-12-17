@@ -1,26 +1,22 @@
-body{
-    background-color: #D7F0E6; 
+body {
+    background-color: #D7F0E6;
     font-family: "Raleway";
 }
 
 .container {
-  
-  margin-top: 10%;
-  margin-left: 15%;
-  width: 63vw;
-  height: auto;
-  padding: 40px;
-  background-color: white;
-  border-radius: 3px;
-  visibility: visible;
-  transition: transform 50ms;
-    
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 63vw;
+    height: auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 3px;
+    visibility: visible;
+    transition: transform 50ms;
 }
 
-
-
-.sign_in button{
-    width: 74%; 
+.sign_in button {
+    width: 74%;
     margin-top: 5%;
     color: #50D09D;
     font-weight: 700;
@@ -32,23 +28,22 @@ body{
     border-color: #50D09D;
     transition: 0.2s;
     font-size: 15px;
-    
+}
+
+    .sign_in button:hover {
+        background: #50D09D;
+        color: white
     }
 
-.sign_in button:hover { background: #50D09D; color: white}
-
-
-
 .title {
-    margin-left: 5%;
     margin-top: 2%;
     margin-bottom: 10px;
     font-size: 16px;
     line-height: 14px;
 }
 
+
 .text {
-    margin-left: 5%;
     width: 0 auto;
     align-content: center;
     width: 70%;
@@ -56,7 +51,18 @@ body{
     line-height: 40px;
     padding: 0px 10px;
     outline: none;
-    
 }
 
 
+
+
+
+.sign_up img {
+    width: 20%;
+    margin-top: 2%;
+}
+
+.or {
+    margin-top: 3%;
+    font-size: 17px;
+}
