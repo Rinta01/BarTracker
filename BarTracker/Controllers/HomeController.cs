@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BarTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BarTracker.Controllers
 {
@@ -14,26 +16,18 @@ namespace BarTracker.Controllers
         {
             return View();
         }
-        
-        [Authorize]
-        public ActionResult MyProfile()
+        public ActionResult BarList(string SearchCity)
         {
-            return View();
+            List<Bar> listBarsCurrentCity = new List<Bar>();
+            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
+            {
+                listBarsCurrentCity = db.Bar.Where(x => x.City.ToLower().Equals(SearchCity.ToLower())).ToList();
+                if (listBarsCurrentCity.Count()==0)
+                {
+                    return View("Index");
+                }
+            }
+            return View(listBarsCurrentCity);
         }
-        public ActionResult List()
-        {
-            return View();
-        }
-
-        public ActionResult Auth()
-        {
-            return View();
-        }
-
-        public ActionResult Registration()
-        {
-            return View();
-        }
-
     }
 }

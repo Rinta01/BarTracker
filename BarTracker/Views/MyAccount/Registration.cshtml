@@ -1,4 +1,4 @@
-﻿
+﻿@model BarTracker.Models.User
 @{
     ViewBag.Title = "Registration";
 }
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="~/Content/auth.css">
 </head>
 <body>
-    <div class=container>
+    <form action="@Url.Action("Registration","MyAccount")" class=container>
         <div class="authorization">
             <center class="input">
                 <div class="title"> NAME</div>
@@ -32,9 +32,8 @@
         </div>
         <center class="sign_in">
             <button type="button">SIGN IN!</button>
-        </center>
-        
-        
+        </div>
     </div>
+
 </body>
 </html>
