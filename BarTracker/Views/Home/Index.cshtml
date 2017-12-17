@@ -31,6 +31,7 @@
     }
     else
     {
+        <div>
         <div class="container">
             <a class=sign_in href="@Url.Action("Authorization","MyAccount")">
                 <img src="~/screenshots/sign_in.png" />
@@ -41,6 +42,7 @@
                 <img src="~/screenshots/sign_up.png" />
             </a>
         </div>
+            </div>
     }   
     <a class="amster" href="@Url.Action("BarList","Home",new {SearchCity = "Amsterdam" })">
         <img src="~/screenshots/амстер.png" />
@@ -61,10 +63,16 @@
         <p>
             <center><input type="search" class="search" placeholder="Find your city" name="SearchCity"></center>
             <center><input type="submit" class="search1" value="Search" name="SearchCityBtn"></center>
-            <center><label>OR YOU CAN SEARCH THE BAR</label></center>
-            <center><input type="search" class="search" placeholder="Find your bar" name="SearchBar"></center>
     </p>
+        <center><label>OR YOU CAN SEARCH THE BAR</label></center>
         </form>
+    <form action="@Url.Action("BarSearch","Home")">
+        <p>
+            <center><input type="submit" class="search1" value="Search" name="SearchBarBtn"></center>
+            <center><input type="search" class="search" placeholder="Find your bar" name="SearchBar"></center>
+        </p>
+    </form>
+
 
     <a class="wellington" href="@Url.Action("BarList","Home",new {SearchCity = "Wellington" })">
         <img src="~/screenshots/велингтон.png">

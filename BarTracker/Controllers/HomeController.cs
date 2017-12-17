@@ -34,14 +34,25 @@ namespace BarTracker.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult AddBar(Bar bar)
+        {
+            if (bar.BarName != "" && bar.Category != "" && bar.City != "")
+            {
+                using (BarTrackerDBEntities db = new BarTrackerDBEntities())
+                {
+                    db.Bar.Add(bar);
+                    db.SaveChanges();
+                }
+            }
+              return View("Index");
+        }
+        [HttpGet]
         public ActionResult AddBar()
         {
-            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
-            {
-
-            }
-              return View();
+            return View();
         }
+
 
         public ActionResult EditBar(Bar bar)
         {

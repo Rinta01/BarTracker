@@ -117,6 +117,16 @@ body{
     transition: 0.2s;
     align-content: center;
 }
+.signindiv {
+    margin-right: 5%;
+}
+
+.plus img {
+    width: 8%;
+    float: right;
+    margin-right: 18%;
+    margin-top: 10%;
+}
 
 .sorting .date:focus { border: 2px solid; border-color: #50D09D;}
 

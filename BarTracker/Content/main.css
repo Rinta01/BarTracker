@@ -43,7 +43,7 @@ body, html {
 
 
 .sign_in img {
-    width: 255px;
+    width: 200px;
     float: right;
     margin: 3% 5%; 
 }
@@ -364,5 +364,4 @@ input[type=radio]:nth-of-type(2):checked ~ .pages .page:nth-of-type(2) .input:nt
     
     
 }
-
 
