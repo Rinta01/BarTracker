@@ -1,4 +1,4 @@
-﻿
+﻿@model BarTracker.Models.Bar
 @{
     ViewBag.Title = "Bar";
 }
@@ -18,7 +18,7 @@
 <body>
     <div class="container">
         <center class="bar_name">
-            Bar Name
+            @Model.BarName
         </center>
         <div class="text">
             <br>
