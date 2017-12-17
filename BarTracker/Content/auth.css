@@ -15,7 +15,7 @@ body {
     transition: transform 50ms;
 }
 
-.sign_in button {
+.sign_in input[type=submit] {
     width: 74%;
     margin-top: 5%;
     color: #50D09D;
@@ -30,7 +30,7 @@ body {
     font-size: 15px;
 }
 
-    .sign_in button:hover {
+    .sign_in input[type=submit]:hover {
         background: #50D09D;
         color: white
     }
