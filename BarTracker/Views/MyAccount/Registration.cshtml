@@ -15,26 +15,25 @@
     <link rel="stylesheet" href="~/Content/auth.css">
 </head>
 <body>
-    <form action="@Url.Action("Registration","MyAccount")" class=container>
+    <form action="@Url.Action("Registration","MyAccount")" method="post" class=container>
         <div class="authorization">
-            <center class="input">
+            <div class="input">
                 <div class="title"> NAME</div>
-                <form><input class="text" type="text" placeholder="" /></form>
-            </center>
-            <center class="input">
+               <input class="text" type="text" placeholder="" name="LoginReg"/>
+            </div>
+            <div class="input">
                 <div class="title"> EMAIL</div>
-                <form><input class="text" type="email" placeholder="" /></form>
-            </center>
-            <center class="input">
+                <input class="text" type="email" placeholder="" name="EmailReg"/>
+            </div>
+            <div class="input">
                 <div class="title"> PASSWORD</div>
-                <form><input class="text" type="password" placeholder="" /></form>
-            </center>
+                <input class="text" type="password" placeholder="" name="PasswordReg" />
+            </div>
         </div>
-        <center class="sign_in">
-            <button type="button">SIGN IN!</button>
-        </center>
-        
-        
-    </div>
+        <p></p>
+        <div class="sign_up">
+            <input type="submit" value="Sign Up!"/>
+        </div>
+    </form>
 </body>
 </html>
