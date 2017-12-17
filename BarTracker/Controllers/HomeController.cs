@@ -21,9 +21,11 @@ namespace BarTracker.Controllers
             List<Bar> listBarsCurrentCity = new List<Bar>();
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
-                listBarsCurrentCity = db.Bar.Where(x => x.City.Equals(SearchCity)).ToList();
-                if (listBarsCurrentCity == null)
+                listBarsCurrentCity = db.Bar.Where(x => x.City.ToLower().Equals(SearchCity.ToLower())).ToList();
+                if (listBarsCurrentCity.Count()==0)
+                {
                     return View("Index");
+                }
             }
             return View(listBarsCurrentCity);
         }
@@ -58,7 +60,7 @@ namespace BarTracker.Controllers
             return View("Lol");
         }
         [HttpPost]
-        public ActionResult Index(string LoginName, string PasswordBox)
+        public ActionResult Register(string LoginName, string PasswordBox)
         {
             if (ModelState.IsValid)
             {

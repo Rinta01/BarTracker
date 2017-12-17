@@ -23,30 +23,32 @@
             </a>
     </div>
 
-    <a class="amster" href="List">
+    <a class="amster" href="@Url.Action("BarList","Home",new {SearchCity = "Amsterdam" })">
         <img src="~/screenshots/амстер.png" />
     </a>
 
-    <a class="barcelona" href="List">
+    <a class="barcelona" href="@Url.Action("BarList","Home",new {SearchCity = "Barcelona" })">
         <img src="~/screenshots/барселона.png" />
     </a>
 
-    <a class="berlin" href="List">
+    <a class="berlin" href="@Url.Action("BarList","Home",new {SearchCity = "Berlin" })">
         <img src="~/screenshots/берлин.png" />
     </a>
 
     <div class="content">
         Choose the city which is interesting for you:
     </div>
-    <p>
-        <input type="search" class="search" placeholder="Find your city" name="SearchCityTb">
+    <form action="@Url.Action("BarList","Home")">
+        <p>
+        <input type="search" class="search" placeholder="Find your city" name="SearchCity">
         <input type="submit" class="search1" value="Search" name="SearchCityBtn">
     </p>
+        </form>
 
-    <a class="welington" href="List">
+    <a class="wellington" href="@Url.Action("BarList","Home",new {SearchCity = "Wellington" })">
         <img src="~/screenshots/велингтон.png">
     </a>
-    <a class="dublin" href="List">
+    <a class="dublin" href="@Url.Action("BarList","Home",new {SearchCity = "Dublin" })">
         <img src="~/screenshots/дублин.png">
     </a>
     <a class="content1">

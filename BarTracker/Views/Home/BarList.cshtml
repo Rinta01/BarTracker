@@ -15,7 +15,7 @@
             
             <div class="tipoheader">
                 <span class="label_bars">
-                    <label class="label">Bar`s in @Model.FirstOrDefault().City</label>
+                    <label class="label">Bars in <strong>@Model.FirstOrDefault().City</strong></label>
                 </span>
                 <span class="sorting">
                     <label class="label">Sorting: </label>
@@ -33,11 +33,44 @@
                         <img src="~/screenshots/Star.png">
                     </span>
                 </div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BarName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BarName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.BarId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.BarId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.BarId })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
                 <div class="comment_content">Good news for all of the handsome men out there, Door 74 has a clear no bothering policy. If you want to enjoy a pleasant evening without being interrogated by…</div>
                 <center class="read_more">
                     <button class="button_read_more" type="button" href="#">Read more</button>
                 </center>
-                
+                @if (ViewBag.Star == 1)
+            {
+
+
+            }
             </div>
             
         </div>
