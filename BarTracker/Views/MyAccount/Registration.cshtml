@@ -16,31 +16,31 @@
     <link rel="stylesheet" href="~/Content/auth.css">
 </head>
 <body>
-    <div class=container>
+    <form action="@Url.Action("Registration","MyAccount")" class=container>
         <div class="authorization">
             <div class="input">
                 <div class="title"> USERNAME</div>
-                <form action="">
+                <div>
                     <input class="text" type="text" placeholder="" />
-                </form>
+                </div>
             </div>
             <div class="input">
                 <div class="title"> PASSWORD</div>
-                <form action="">
+                <div>
                     <input class="text" type="password" placeholder="" />
-                </form>
+                </div>
             </div>
             <div class="input">
-                <div class="title"> PASSWORD</div>
-                <form action="">
-                    <input class="text" type="password" placeholder="" />
-                </form>
+                <div class="title"> EMAIL</div>
+                <div>
+                    <input class="text" type="email" placeholder="" />
+                </div>
             </div>
         </div>
         <div class="sign_in">
             <button type="button">SIGN IN!</button>
         </div>
-    </div>
+    </form>
 
 </body>
 </html>
