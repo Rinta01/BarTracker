@@ -15,20 +15,20 @@
             
             <div class="tipoheader">
                 <span class="label_bars">
-                    <label class="label">Bars in <strong>@Model.FirstOrDefault().City</strong></label>
+                    <label class="label">Where to go in: </label>
                 </span>
                 <span class="sorting">
                     <label class="label">Sorting: </label>
                     <button class="rating">Rating</button>
                     <button class="date">Date</button>
                 </span>
-                <span class="signin" href="">
+                <span class="signin" href="@Url.Action("SignIn","MyAccount")">
                     <img src="~/screenshots/sign_in.png">
                 </span>
             </div>
             <div class="list">
                 <div class="h">
-                    <span class="name">Door 74</span>
+                    <span class="name"><strong>@Model.FirstOrDefault().City</strong></span>
                     <span class="rating">
                         <img src="~/screenshots/Star.png">
                     </span>

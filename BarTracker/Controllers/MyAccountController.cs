@@ -10,19 +10,14 @@ namespace BarTracker.Controllers
 {
     public class MyAccountController : Controller
     {
-        // GET: MyAccount
-        public ActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
-        public ActionResult LogIn()
+        public ActionResult Authorization()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogIn(Models.User user)
+        public ActionResult Authorization(Models.User user)
         {
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
@@ -30,24 +25,23 @@ namespace BarTracker.Controllers
                 if(CurrentUser!=null)
                 {
                     Membership.ValidateUser(CurrentUser.Username,CurrentUser.Password);
-                    
                 }
             }
                 return View();
         }
         [HttpGet]
-        public ActionResult Register()
+        public ActionResult Registration()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Register(string LoginName, string PasswordBox )
+        public ActionResult Registration(string LoginName, string PasswordBox)
         {
             if(ModelState.IsValid)
             { using(BarTrackerDBEntities db = new BarTrackerDBEntities())
                 {
                     db.User.Add(new User { Username = LoginName, Password = PasswordBox });
-                    db.SaveChangesAsync();
+                    db.SaveChanges();
                 }        
             }
             return Redirect("/Home/Index");
@@ -59,6 +53,10 @@ namespace BarTracker.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
     }
 }
