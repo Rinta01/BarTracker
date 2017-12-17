@@ -4,18 +4,17 @@ body {
 }
 
 .container {
+    overflow: scroll;
     margin-top: 10%;
     margin-left: 15%;
-    width: 63vw;
-    height: auto;
+    width: 60%;
+    height: 20%;
     padding: 40px;
     background-color: white;
     border-radius: 3px;
-    visibility: visible;
-    transition: transform 50ms;
 }
 
-.sign_in input[type=submit] {
+.sign_in button {
     width: 74%;
     margin-top: 5%;
     color: #50D09D;
@@ -30,7 +29,7 @@ body {
     font-size: 15px;
 }
 
-    .sign_in input[type=submit]:hover {
+    .sign_in button:hover {
         background: #50D09D;
         color: white
     }
@@ -42,20 +41,13 @@ body {
     line-height: 14px;
 }
 
-
-.text {
-    width: 0 auto;
-    align-content: center;
-    width: 70%;
+.text input {
+    width: 80%;
     height: 40px;
     line-height: 40px;
     padding: 0px 10px;
     outline: none;
 }
-
-
-
-
 
 .sign_up img {
     width: 20%;
