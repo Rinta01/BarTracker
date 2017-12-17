@@ -155,6 +155,7 @@
     </Content>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="screenshots\London.png" />
+    <Content Include="screenshots\plus.png" />
     <Content Include="screenshots\quick-edit.png" />
     <Content Include="screenshots\sign_in.png" />
     <Content Include="screenshots\sign_up.png" />
@@ -177,6 +178,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Home\Bar.cshtml" />
+    <Content Include="Views\Home\Add.cshtml" />
     <None Include="Views\Home\BarList.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -228,6 +230,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\MyAccount\Registration.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
