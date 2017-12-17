@@ -29,5 +29,9 @@ namespace BarTracker.Controllers
             }
             return View(listBarsCurrentCity);
         }
+        public ActionResult Bar()
+        {
+            return View();
+        }
     }
 }
