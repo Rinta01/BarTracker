@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    margin-top: 10%;
+    margin-top: 7%;
     margin-left: 15%;
     width: 63vw;
     height: auto;
@@ -16,6 +16,7 @@ body {
 }
 
 .bar_name {
+    margin-top: 5%;
     font-size: 25px;
 }
 
@@ -55,4 +56,13 @@ body {
 .sign_in button:hover {
     background: #50D09D;
     color: white
+}
+
+.bar_name img {
+    width: 2%;
+}
+
+.rating {
+    margin-left: 3%;
+    color: dimgray;
 }
