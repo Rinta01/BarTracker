@@ -144,7 +144,6 @@
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
       <LastGenOutput>BarTrackerModel.cs</LastGenOutput>
     </Content>
-    <Content Include="screenshots\Sadly.docx" />
     <EntityDeploy Include="Models\BarTrackerModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BarTrackerModel.Designer.cs</LastGenOutput>
@@ -173,7 +172,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Home\list.html" />
+    <None Include="Views\Home\BarList.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -222,6 +221,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\MyAccount\Register.cshtml" />
+    <Content Include="Views\Home\BarList1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

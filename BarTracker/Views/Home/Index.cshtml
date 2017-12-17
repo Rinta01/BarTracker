@@ -41,10 +41,10 @@
                         <input class="text" type="password" placeholder="" />
                     </div>
                     <div class="input">
-                        <input type="submit" name="SingInBtn" value="ENTER" />
+                        <input type="submit" name="SingIn" value="ENTER" onclick="@Url.Action("SignIn","Home")" />
                     </div>
                 </div>
-                <div class="page signup">
+                <div class="page signup" action="~/Views/Home/Index.cshtml" method="post">
                     <div class="input">
                         <div class="title" ><i class="material-icons">person</i> USERNAME </div>
                         <input class="text" type="text" placeholder="" name="LoginBox"/>
@@ -54,7 +54,7 @@
                         <input class="text" type="password" placeholder="" name="PasswordBox" />
                     </div>
                     <div class="input">
-                        <input type="submit" name="RegisterBtn" value="SIGN ME UP!" />
+                        <input type="submit" name="Register" value="SIGN ME UP!"/>
                     </div>
                 </div>
             </div>
@@ -84,10 +84,13 @@
     <div class="content">
         Choose the city which is interesting for you:
     </div>
-    <p>
-        <input type="search" class="search" placeholder="Find your city" name="SearchCityTb">
-        <input type="submit" class="search1" value="Search" name="SearchCityBtn">
-    </p>
+   
+    <form action="Barlist" method="post">
+        <p>
+            <input type="search" class="search" placeholder="Find your city" name="SearchCity">
+            <input type="submit" class="search1" value="Search" name="SearchCityBtn" onclick="location.href='@Url.Action("BarList", "Home")'">
+        </p>
+    </form>
 
     <span class="welington" href="">
         <img src="~/screenshots/велингтон.png">
