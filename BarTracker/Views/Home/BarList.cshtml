@@ -19,12 +19,25 @@
                 </span>
                 <span class="sorting">
                     <label class="label">Sorting: </label>
-                    <button class="rating">Rating</button>
+                    <button class="rating" onclick="location.href=@Url.Action("BarSorting","Home", new {id ="Rating"})">Rating</button>
                     <button class="category">Category</button>
                 </span>
-                <span class="signin" href="@Url.Action("SignIn","MyAccount")">
+@if (User.Identity.IsAuthenticated)
+{
+    <div>
+                <a class="signin" href="@Url.Action("Authorize", "MyAccount")">
                     <img src="~/screenshots/sign_in.png">
-                </span>
+                </a>
+        </div>
+}
+else
+{
+    <div class="container">
+        <a class=register href="@Url.Action("MyProfile","MyAccount")">
+            <img src="~/screenshots/user.png" />
+        </a>
+    </div>
+}
             </div>
             <div class="list">
                 <div class="h">
@@ -56,77 +69,7 @@
                                 @Html.DisplayFor(modelItem => item.Category)
                             </td>
                             <td>
-                                @if(item.Rating.Count() != 0)
-                                {
-                                if(item.Rating.SingleOrDefault().RatingValue == 1)
-                                {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                }
-                                if (item.Rating.SingleOrDefault().RatingValue == 2)
-                                {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                }
-                                if (item.Rating.SingleOrDefault().RatingValue == 3)
-                                {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                }
-                                if (item.Rating.SingleOrDefault().RatingValue == 4)
-                                {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                }
-                                if(item.Rating.SingleOrDefault().RatingValue == 5)
-                                {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                }
-                                if(item.Rating.SingleOrDefault().RatingValue == 0)
-                                { }
-                                }
-                                else
-                                {
-                                    ViewBag.Text = "Еще не оценен.";
-                                }
-
-
+                                @Html.DisplayFor(modelItem => item.Rating.FirstOrDefault().RatingValue)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "EditBar", new { id = item.BarId }) |
