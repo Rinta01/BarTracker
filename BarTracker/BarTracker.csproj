@@ -118,10 +118,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\auth.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\listcss.css" />
     <Content Include="Content\main.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -133,7 +135,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\listcss.css" />
     <Content Include="Models\BarTrackerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
@@ -155,6 +156,8 @@
     <Content Include="screenshots\London.png" />
     <Content Include="screenshots\quick-edit.png" />
     <Content Include="screenshots\sign_in.png" />
+    <Content Include="screenshots\sign_up.png" />
+    <Content Include="screenshots\Star.png" />
     <Content Include="screenshots\амстер.png" />
     <Content Include="screenshots\барселона.png" />
     <Content Include="screenshots\берлин.png" />
@@ -220,8 +223,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
-    <Content Include="Views\MyAccount\Register.cshtml" />
-    <Content Include="Views\Home\BarList1.cshtml" />
+    <Content Include="Views\Home\list.cshtml" />
+    <Content Include="Views\Home\auth.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
