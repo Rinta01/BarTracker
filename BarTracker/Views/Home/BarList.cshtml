@@ -56,26 +56,16 @@
                                 @Html.DisplayFor(modelItem => item.Category)
                             </td>
                             <td>
-                                @if (item.Rating.SingleOrDefault().RatingValue == 1)
+                                @if(item.Rating.Count() != 0)
+                                {
+                                if(item.Rating.SingleOrDefault().RatingValue == 1)
                                 {
                                     <span class="rating">
                                         <img src="~/screenshots/Star.png">
                                     </span>
                                 }
-                                @if (item.Rating.SingleOrDefault().RatingValue == 2)
+                                if (item.Rating.SingleOrDefault().RatingValue == 2)
                                 {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
-                                }
-                                @if (item.Rating.SingleOrDefault().RatingValue == 3)
-                                {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
                                     <span class="rating">
                                         <img src="~/screenshots/Star.png">
                                     </span>
@@ -83,11 +73,8 @@
                                         <img src="~/screenshots/Star.png">
                                     </span>
                                 }
-                                @if (item.Rating.SingleOrDefault().RatingValue == 4)
+                                if (item.Rating.SingleOrDefault().RatingValue == 3)
                                 {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
                                     <span class="rating">
                                         <img src="~/screenshots/Star.png">
                                     </span>
@@ -98,11 +85,8 @@
                                         <img src="~/screenshots/Star.png">
                                     </span>
                                 }
-                                @if (item.Rating.SingleOrDefault().RatingValue == 5)
+                                if (item.Rating.SingleOrDefault().RatingValue == 4)
                                 {
-                                    <span class="rating">
-                                        <img src="~/screenshots/Star.png">
-                                    </span>
                                     <span class="rating">
                                         <img src="~/screenshots/Star.png">
                                     </span>
@@ -116,20 +100,38 @@
                                         <img src="~/screenshots/Star.png">
                                     </span>
                                 }
-                                @if (item.Rating.SingleOrDefault().RatingValue == 1)
+                                if(item.Rating.SingleOrDefault().RatingValue == 5)
                                 {
                                     <span class="rating">
                                         <img src="~/screenshots/Star.png">
                                     </span>
+                                    <span class="rating">
+                                        <img src="~/screenshots/Star.png">
+                                    </span>
+                                    <span class="rating">
+                                        <img src="~/screenshots/Star.png">
+                                    </span>
+                                    <span class="rating">
+                                        <img src="~/screenshots/Star.png">
+                                    </span>
+                                    <span class="rating">
+                                        <img src="~/screenshots/Star.png">
+                                    </span>
+                                }
+                                if(item.Rating.SingleOrDefault().RatingValue == 0)
+                                { }
+                                }
+                                else
+                                {
+                                    ViewBag.Text = "Еще не оценен.";
                                 }
 
 
-                                @Html.DisplayFor(modelItem => item.Rating)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.BarId }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.BarId }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.BarId }) |
+                                @Html.ActionLink("Edit", "EditBar", new { id = item.BarId }) |
+                                @Html.ActionLink("Details", "BarDetails", new { id = item.BarId }) |
+                                @Html.ActionLink("Delete", "DeleteBar", new { id = item.BarId }) |
                             </td>
                         </tr>
                     }
@@ -137,7 +139,7 @@
                 </table>
                 <div class="comment_content">Good news for all of the handsome men out there, Door 74 has a clear no bothering policy. If you want to enjoy a pleasant evening without being interrogated by…</div>
             </div>
-            <a class="plus" href="~/Views/Home/BarList.cshtml" >
+            <a class="plus" href="@Url.Action("AddBar","Home")" >
                 <img src="~/screenshots/plus.png" />
             </a>
             

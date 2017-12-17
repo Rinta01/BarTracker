@@ -54,7 +54,7 @@ namespace BarTracker.Controllers
         public ActionResult Registration(string LoginReg, string PasswordReg, string EmailReg)
         {
             Regex reg = new Regex(@".+\@\w+\.\w+", RegexOptions.Compiled);
-            if (reg.Match(EmailReg) != null)
+            if (reg.Match(EmailReg) != null && LoginReg != "" && PasswordReg != "" && EmailReg != "")
             {
                 if (ModelState.IsValid)
                 {
@@ -62,11 +62,15 @@ namespace BarTracker.Controllers
                     {
                         db.User.Add(new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg });
                         db.SaveChanges();
-                        
                     }
                 }
-            }                
-            return RedirectToAction("Authorize",new {user = new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg } });
+
+                return RedirectToAction("Authorization", new { user = new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg } });
+            }
+            else
+            {
+                return View();
+            }
         }
         public ActionResult SignOut()
         {

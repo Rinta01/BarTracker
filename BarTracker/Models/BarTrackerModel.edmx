@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище BarTrackerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище BarTrackerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bar">
           <Key>
             <PropertyRef Name="BarId" />
           </Key>
-          <Property Name="BarId" Type="int" Nullable="false" />
+          <Property Name="BarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BarName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Category" Type="nvarchar" MaxLength="50" />
           <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="RatingId" />
           </Key>
-          <Property Name="RatingId" Type="int" Nullable="false" />
+          <Property Name="RatingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RatingValue" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="BarId" Type="int" Nullable="false" />
@@ -27,7 +27,7 @@
           <Key>
             <PropertyRef Name="ReviewId" />
           </Key>
-          <Property Name="ReviewId" Type="int" Nullable="false" />
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReviewContent" Type="text" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="BarId" Type="int" Nullable="false" />
@@ -36,10 +36,10 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nchar" MaxLength="100" />
+          <Property Name="Email" Type="nchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK_Rating_BarId">
           <End Role="Bar" Type="Self.Bar" Multiplicity="1">
@@ -101,7 +101,8 @@
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BarTrackerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -109,7 +110,7 @@
           <Key>
             <PropertyRef Name="BarId" />
           </Key>
-          <Property Name="BarId" Type="Int32" Nullable="false" />
+          <Property Name="BarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -120,17 +121,17 @@
           <Key>
             <PropertyRef Name="RatingId" />
           </Key>
-          <Property Name="RatingId" Type="Int32" Nullable="false" />
+          <Property Name="RatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RatingValue" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="BarId" Nullable="false" Type="Int32" />
+          <Property Name="BarId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bar" Relationship="Self.FK_Rating_BarId" FromRole="Rating" ToRole="Bar" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
             <PropertyRef Name="ReviewId" />
           </Key>
-          <Property Name="ReviewId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReviewContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="BarId" Type="Int32" Nullable="false" />
@@ -141,17 +142,17 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Reviews_UserId" FromRole="User" ToRole="Review" />
         </EntityType>
         <Association Name="FK_Rating_BarId">
-          <End Type="Self.Bar" Multiplicity="1" Role="Bar">
+          <End Role="Bar" Type="Self.Bar" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Self.Rating" Multiplicity="*" Role="Rating" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bar">
               <PropertyRef Name="BarId" />
@@ -195,8 +196,8 @@
           <EntitySet Name="Review" EntityType="Self.Review" />
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Rating_BarId" Association="Self.FK_Rating_BarId">
-            <End EntitySet="Bar" Role="Bar" />
-            <End EntitySet="Rating" Role="Rating" />
+            <End Role="Bar" EntitySet="Bar" />
+            <End Role="Rating" EntitySet="Rating" />
           </AssociationSet>
           <AssociationSet Name="FK_Reviews_BarId" Association="Self.FK_Reviews_BarId">
             <End Role="Bar" EntitySet="Bar" />
@@ -206,25 +207,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK_Rating_BarId1" Association="BarTrackerDBModel.FK_Rating_BarId1">
-            <End Role="Bar" EntitySet="Bar" />
-            <End Role="Rating" EntitySet="Rating" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Rating_BarId1">
-          <End Type="BarTrackerDBModel.Bar" Role="Bar" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BarTrackerDBModel.Rating" Role="Rating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bar">
-              <PropertyRef Name="BarId" />
-            </Principal>
-            <Dependent Role="Rating">
-              <PropertyRef Name="BarId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
