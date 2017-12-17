@@ -40,6 +40,7 @@ body{
 
 
 .title {
+    margin-left: 5%;
     margin-top: 2%;
     margin-bottom: 10px;
     font-size: 16px;
@@ -47,6 +48,7 @@ body{
 }
 
 .text {
+    margin-left: 5%;
     width: 0 auto;
     align-content: center;
     width: 70%;

@@ -20,12 +20,17 @@ namespace BarTracker.Controllers
         {
             return View();
         }
-        public ActionResult list()
+        public ActionResult List()
         {
             return View();
         }
 
-        public ActionResult auth()
+        public ActionResult Auth()
+        {
+            return View();
+        }
+
+        public ActionResult Registration()
         {
             return View();
         }
