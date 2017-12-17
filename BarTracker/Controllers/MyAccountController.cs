@@ -2,12 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
 namespace BarTracker.Controllers
 {
+
+    
     public class MyAccountController : Controller
     {
         [HttpGet]
@@ -15,19 +18,32 @@ namespace BarTracker.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Authorization(Models.User user)
+        public ActionResult Authorization(string Username, string Password)
         {
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
-                var CurrentUser = db.User.Where(u => u.Username.Equals(user.Username) && u.Password.Equals(user.Password)).FirstOrDefault();
+                var CurrentUser = db.User.Where(u => u.Username.Equals(Username) && u.Password.Equals(Password)).FirstOrDefault();
                 if(CurrentUser!=null)
                 {
-                    Membership.ValidateUser(CurrentUser.Username,CurrentUser.Password);
+                    FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                    10,
+                    Username,
+                    DateTime.Now,
+                    DateTime.Now.AddMinutes(40),
+                    true,
+                    "user"
+                    );
+
+
+                    HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(authTicket));
+
+                    cookie.Expires = authTicket.Expiration;
+                    Response.Cookies.Add(cookie);
                 }
             }
-                return View();
+                return RedirectToAction("Index","Home");
         }
         [HttpGet]
         public ActionResult Registration()
@@ -35,23 +51,27 @@ namespace BarTracker.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Registration(string LoginName, string PasswordBox)
+        public ActionResult Registration(string LoginReg, string PasswordReg, string EmailReg)
         {
-            if(ModelState.IsValid)
-            { using(BarTrackerDBEntities db = new BarTrackerDBEntities())
+            Regex reg = new Regex(@".+\@\w+\.\w+", RegexOptions.Compiled);
+            if (reg.Match(EmailReg) != null)
+            {
+                if (ModelState.IsValid)
                 {
-                    db.User.Add(new User { Username = LoginName, Password = PasswordBox });
-                    db.SaveChanges();
-                }        
-            }
-            return Redirect("/Home/Index");
-
+                    using (BarTrackerDBEntities db = new BarTrackerDBEntities())
+                    {
+                        db.User.Add(new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg });
+                        db.SaveChanges();
+                        
+                    }
+                }
+            }                
+            return RedirectToAction("Authorize",new {user = new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg } });
         }
-        [HttpPost]
-        public ActionResult SignOut(Models.User user)
+        public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         [Authorize]
         public ActionResult MyProfile()

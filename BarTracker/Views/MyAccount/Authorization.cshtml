@@ -1,4 +1,4 @@
-﻿
+﻿@model BarTracker.Models.User
 @{
     ViewBag.Title = "auth";
 }
@@ -16,25 +16,21 @@
     <link rel="stylesheet" href="~/Content/auth.css">
 </head>
 <body>
-    <div class=container>
+    <form action="@Url.Action("Authorization","MyAccount")" method="post" class=container>
         <div class="authorization">
             <div class="input">
                 <div class="title"> USERNAME</div>
-                <form action="">
-                   <input class="text" type="text" placeholder="" />
-                </form>
+                   <input class="text" type="text" placeholder="" name="Username"/>
             </div>
             <div class="input">
                 <div class="title"> PASSWORD</div>
-                <form action="">
-                   <input class="text" type="password" placeholder="" />
-                </form>
+                   <input class="text" type="password" placeholder="" name="Password"/>
+            </div>
+            <div class="sign_in">
+                <input type="submit" value="SIGN IN!"/>
             </div>
         </div>
-        <div class="sign_in">
-            <button type="button">SIGN IN!</button>
-        </div>
-    </div>
+    </form>
 
 </body>
 </html>

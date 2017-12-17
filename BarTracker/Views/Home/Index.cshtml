@@ -16,18 +16,33 @@
     <link rel="stylesheet" href="~/Content/main.css">
 </head>
 <body>
-
-    <div class="container">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="container">
+            <a class="myprofile" href="@Url.Action("MyProfile","MyAccount")">
+                <img src="~/screenshots/London.png" />
+            </a>
+        </div>       
+        <div class="container">
+                <a class=sign_in href="@Url.Action("SignOut","MyAccount")">
+                    <img src="~/screenshots/ньюйорк.png" />
+                </a>
+        </div>
+    }
+    else
+    {
+        <div class="container">
             <a class=sign_in href="@Url.Action("Authorization","MyAccount")">
                 <img src="~/screenshots/sign_in.png" />
             </a>
-    </div>
-    <div class="container">
-        <a class=register href="@Url.Action("Registration","MyAccount")">
-            <img src="~/screenshots/sign_up.png" />
-        </a>
-    </div>
+        </div>
+        <div class="container">
+            <a class=register href="@Url.Action("Registration","MyAccount")">
+                <img src="~/screenshots/sign_up.png" />
+            </a>
+        </div>
 
+    }   
     <a class="amster" href="@Url.Action("BarList","Home",new {SearchCity = "Amsterdam" })">
         <img src="~/screenshots/амстер.png" />
     </a>
