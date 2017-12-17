@@ -11,8 +11,7 @@ namespace BarTracker.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,14 +19,10 @@ namespace BarTracker.Models
         {
             this.Review = new HashSet<Review>();
         }
+    
         public int UserId { get; set; }
-        [Required(ErrorMessage = "Username required.", AllowEmptyStrings = false)]
         public string Username { get; set; }
-        [Required(ErrorMessage = "Password required.", AllowEmptyStrings = false)]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Email required.", AllowEmptyStrings = false)]
-        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

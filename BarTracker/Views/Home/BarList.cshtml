@@ -20,7 +20,7 @@
                 <span class="sorting">
                     <label class="label">Sorting: </label>
                     <button class="rating">Rating</button>
-                    <button class="date">Date</button>
+                    <button class="category">Category</button>
                 </span>
                 <span class="signin" href="@Url.Action("SignIn","MyAccount")">
                     <img src="~/screenshots/sign_in.png">
@@ -41,7 +41,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Category)
                         </th>
-                        <th></th>
+                        <th>
+                            @Html.DisplayNameFor(model =>model.Rating)
+                        </th>
                     </tr>
 
                     @foreach (var item in Model)
@@ -52,6 +54,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Rating)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.BarId }) |
