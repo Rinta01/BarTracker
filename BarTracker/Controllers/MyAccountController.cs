@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -37,9 +36,10 @@ namespace BarTracker.Controllers
                     );
 
 
-                    HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(authTicket));
-
-                    cookie.Expires = authTicket.Expiration;
+                    HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(authTicket))
+                    {
+                        Expires = authTicket.Expiration
+                    };
                     Response.Cookies.Add(cookie);
                 }
             }
@@ -53,17 +53,9 @@ namespace BarTracker.Controllers
         [HttpPost]
         public ActionResult Registration(string LoginReg, string PasswordReg, string EmailReg)
         {
-            Regex reg = new Regex(@".+\@\w+\.\w+", RegexOptions.Compiled);
-            if (reg.Match(EmailReg) != null && LoginReg != "" && PasswordReg != "" && EmailReg != "")
+            if (Factory.GetUserLogic().RegistrationValid(LoginReg,PasswordReg,EmailReg) && ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    using (BarTrackerDBEntities db = new BarTrackerDBEntities())
-                    {
-                        db.User.Add(new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg });
-                        db.SaveChanges();
-                    }
-                }
+                Factory.GetUserLogic().RegistrationLogic(LoginReg, PasswordReg, EmailReg);
 
                 return RedirectToAction("Authorization", new { user = new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg } });
             }

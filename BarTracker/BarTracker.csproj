@@ -178,8 +178,9 @@
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Home\BarDetails.cshtml" />
+    <Content Include="Views\Home\BarDetails1.cshtml" />
     <Content Include="Views\Home\AddBar.cshtml" />
+    <Content Include="Views\Home\BarDetails.cshtml" />
     <None Include="Views\Home\BarList.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -195,6 +196,7 @@
     <Compile Include="Models\Bar.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BarLogic.cs" />
     <Compile Include="Models\BarTrackerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +212,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Factory.cs" />
     <Compile Include="Models\Rating.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>
@@ -219,6 +222,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +234,7 @@
     <Content Include="Views\MyAccount\Authorization.cshtml" />
     <Content Include="Views\MyAccount\Registration.cshtml" />
     <Content Include="Views\Home\EditBar.cshtml" />
+    <Content Include="Views\MyAccount\MyProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

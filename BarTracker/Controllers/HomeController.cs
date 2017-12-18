@@ -17,35 +17,37 @@ namespace BarTracker.Controllers
         {
             return View();
         }
-        public ActionResult BarList(string SearchCity)
+        public ActionResult BarListByCity(string SearchCity)
         {
-            List<Bar> listBarsCurrentCity = new List<Bar>();
-            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
+            if (SearchCity != "")
             {
-                listBarsCurrentCity = db.Bar.Include(x=>x.Rating).Where(x => x.City.ToLower().Equals(SearchCity.ToLower())).ToList();
-                if (listBarsCurrentCity.Count() == 0)
+                var CurrentCityList = Factory.GetBarLogic().SearchBarByCityLogic(SearchCity);
+                if (CurrentCityList.Count() == 0)
                 {
                     return View("Index");
                 }
-            }
-            return View(listBarsCurrentCity);
-        }
-        public ActionResult BarDetails(Bar bar)
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddBar(Bar bar)
-        {
-            if (bar.BarName != "" && bar.Category != "" && bar.City != "")
-            {
-                using (BarTrackerDBEntities db = new BarTrackerDBEntities())
+                else
                 {
-                    db.Bar.Add(bar);
-                    db.SaveChanges();
+                    return View(CurrentCityList);
                 }
             }
-              return View("Index");
+            else
+                return View("Index");
+        }
+        public ActionResult BarListByItem(string SearchBar)
+        {
+            if (SearchBar != "")
+            {
+                var CurrentBar = Factory.GetBarLogic().SearchBarByItemLogic(SearchBar);
+                return View("BarDetails", CurrentBar);
+            }
+            else
+                return View("Index");
+        }
+        
+        public ActionResult BarDetails(Bar bar)
+        {
+            return View(bar);
         }
         [HttpGet]
         public ActionResult AddBar()
@@ -53,22 +55,29 @@ namespace BarTracker.Controllers
             return View();
         }
 
-
-        public ActionResult EditBar(Bar bar)
+        [HttpPost]
+        public ActionResult AddBar(Bar bar)
         {
-            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
-            {
+              Factory.GetBarLogic().AddBarLogic(bar);
+              return View("Index");
+        }
 
-            }
+        [HttpGet]
+        public ActionResult EditBar(int BarId)
+        {
+            Factory.GetBarLogic().FindBarById(BarId);
             return View();
         }
+        [HttpPost]
+        public ActionResult EditBar(Bar bar)
+        {
+            Factory.GetBarLogic().EditBarLogic(bar);
+            return View("BarDetails",bar);
+        }
+
         public ActionResult DeleteBar(Bar bar)
         {
-            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
-            {
-                db.Bar.Remove(bar);
-                db.SaveChanges();
-            }
+            Factory.GetBarLogic().DeleteBarLogic(bar);
             return View();
         }
     }

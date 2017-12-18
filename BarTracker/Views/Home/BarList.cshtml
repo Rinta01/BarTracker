@@ -69,7 +69,14 @@ else
                                 @Html.DisplayFor(modelItem => item.Category)
                             </td>
                             <td>
+                                @if (item.Rating.Count() != 0)
+                                {
                                 @Html.DisplayFor(modelItem => item.Rating.FirstOrDefault().RatingValue)
+                                }
+                                else
+                                {
+                                    
+                                }
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "EditBar", new { id = item.BarId }) |

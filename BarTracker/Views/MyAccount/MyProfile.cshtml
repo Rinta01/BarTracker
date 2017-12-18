@@ -1,4 +1,4 @@
-﻿@model BarTracker.Models.Bar
+﻿@model BarTracker.Models.User
 
 @{
     Layout = null;
@@ -9,41 +9,41 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>BarDetails</title>
+    <title>MyProfile</title>
 </head>
 <body>
     <div>
-        <h4>Bar</h4>
+        <h4>User</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.BarName)
+                @Html.DisplayNameFor(model => model.Username)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.BarName)
+                @Html.DisplayFor(model => model.Username)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model.Password)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Category)
+                @Html.DisplayFor(model => model.Password)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayNameFor(model => model.Email)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.City)
+                @Html.DisplayFor(model => model.Email)
             </dd>
     
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.BarId }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>

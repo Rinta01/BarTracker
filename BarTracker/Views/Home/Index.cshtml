@@ -59,14 +59,14 @@
     <div class="content">
         Choose the city which is interesting for you:
     </div>
-    <form action="@Url.Action("BarList","Home")">
+    <form action="@Url.Action("BarListByCity","Home")">
         <p>
             <center><input type="search" class="search" placeholder="Find your city" name="SearchCity"></center>
             <center><input type="submit" class="search1" value="Search" name="SearchCityBtn"></center>
     </p>
         <center><label>OR YOU CAN SEARCH THE BAR</label></center>
         </form>
-    <form action="@Url.Action("BarSearch","Home")">
+    <form action="@Url.Action("BarSearch", "Home")">
         <p>
             <center><input type="submit" class="search1" value="Search" name="SearchBarBtn"></center>
             <center><input type="search" class="search" placeholder="Find your bar" name="SearchBar"></center>
