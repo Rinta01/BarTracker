@@ -6,9 +6,9 @@ using System.Web;
 
 namespace BarTracker.Models
 {
-    public class UserLogic
+    public static class UserLogic
     {
-        public void RegistrationLogic(string LoginReg,string PasswordReg, string EmailReg)
+        public static void RegistrationLogic(string LoginReg,string PasswordReg, string EmailReg)
         {
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
@@ -16,7 +16,7 @@ namespace BarTracker.Models
                 db.SaveChanges();
             }
         }
-        public bool RegistrationValid(string LoginReg, string PasswordReg, string EmailReg)
+        public static bool RegistrationValid(string LoginReg, string PasswordReg, string EmailReg)
         {
             Regex reg = new Regex(@".+\@\w+\.\w+", RegexOptions.Compiled);
             if (reg.Match(EmailReg) != null && LoginReg != "" && PasswordReg != "" && EmailReg != "")

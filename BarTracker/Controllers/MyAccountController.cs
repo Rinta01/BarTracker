@@ -53,9 +53,9 @@ namespace BarTracker.Controllers
         [HttpPost]
         public ActionResult Registration(string LoginReg, string PasswordReg, string EmailReg)
         {
-            if (Factory.GetUserLogic().RegistrationValid(LoginReg,PasswordReg,EmailReg) && ModelState.IsValid)
+            if (UserLogic.RegistrationValid(LoginReg,PasswordReg,EmailReg) && ModelState.IsValid)
             {
-                Factory.GetUserLogic().RegistrationLogic(LoginReg, PasswordReg, EmailReg);
+                UserLogic.RegistrationLogic(LoginReg, PasswordReg, EmailReg);
 
                 return RedirectToAction("Authorization", new { user = new User { Username = LoginReg, Password = PasswordReg, Email = EmailReg } });
             }

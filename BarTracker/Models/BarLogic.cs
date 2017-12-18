@@ -6,9 +6,9 @@ using System.Data.Entity;
 
 namespace BarTracker.Models
 {
-    public class BarLogic
+    public static class BarLogic
     {
-        public void AddBarLogic(Bar bar)
+        public static void AddBarLogic(Bar bar)
         {
             if (bar.BarName != "" && bar.Category != "" && bar.City != "")
             {
@@ -19,7 +19,7 @@ namespace BarTracker.Models
                 }
             }
         }
-        public List<Bar> SearchBarByCityLogic(string SearchCity)
+        public static List<Bar> SearchBarByCityLogic(string SearchCity)
         {
             List<Bar> listBarsCurrentCity = new List<Bar>();
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
@@ -28,7 +28,7 @@ namespace BarTracker.Models
             }
             return listBarsCurrentCity;
         }
-        public Bar SearchBarByItemLogic(string SearchBarByItem)
+        public static Bar SearchBarByItemLogic(string SearchBarByItem)
         {
             Bar SearchedBar = new Bar();
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
@@ -37,7 +37,7 @@ namespace BarTracker.Models
             }
             return SearchedBar;
         }
-        public void DeleteBarLogic(Bar bar)
+        public static void DeleteBarLogic(Bar bar)
         {
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
@@ -45,7 +45,7 @@ namespace BarTracker.Models
                 db.SaveChanges();
             }
         }
-        public Bar EditBarLogic(Bar bar)
+        public static Bar EditBarLogic(Bar bar)
         {
             Bar Fullbar=new Bar();
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
@@ -59,7 +59,7 @@ namespace BarTracker.Models
             }
             return Fullbar;
         }
-        public Bar FindBarById(int BarId)
+        public static Bar FindBarById(int BarId)
         {
             Bar thatbar = new Bar();
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())

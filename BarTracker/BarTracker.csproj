@@ -212,7 +212,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Factory.cs" />
     <Compile Include="Models\Rating.cs">
       <DependentUpon>BarTrackerModel.tt</DependentUpon>
     </Compile>

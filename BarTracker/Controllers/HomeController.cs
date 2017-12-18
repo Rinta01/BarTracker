@@ -21,7 +21,7 @@ namespace BarTracker.Controllers
         {
             if (SearchCity != "")
             {
-                var CurrentCityList = Factory.GetBarLogic().SearchBarByCityLogic(SearchCity);
+                var CurrentCityList = BarLogic.SearchBarByCityLogic(SearchCity);
                 if (CurrentCityList.Count() == 0)
                 {
                     return View("Index");
@@ -38,7 +38,7 @@ namespace BarTracker.Controllers
         {
             if (SearchBar != "")
             {
-                var CurrentBar = Factory.GetBarLogic().SearchBarByItemLogic(SearchBar);
+                var CurrentBar = BarLogic.SearchBarByItemLogic(SearchBar);
                 return View("BarDetails", CurrentBar);
             }
             else
@@ -58,26 +58,26 @@ namespace BarTracker.Controllers
         [HttpPost]
         public ActionResult AddBar(Bar bar)
         {
-              Factory.GetBarLogic().AddBarLogic(bar);
-              return View("Index");
+            BarLogic.AddBarLogic(bar);
+            return View("Index");
         }
 
         [HttpGet]
         public ActionResult EditBar(int BarId)
         {
-            Factory.GetBarLogic().FindBarById(BarId);
+            BarLogic.FindBarById(BarId);
             return View();
         }
         [HttpPost]
         public ActionResult EditBar(Bar bar)
         {
-            Factory.GetBarLogic().EditBarLogic(bar);
+            BarLogic.EditBarLogic(bar);
             return View("BarDetails",bar);
         }
 
         public ActionResult DeleteBar(Bar bar)
         {
-            Factory.GetBarLogic().DeleteBarLogic(bar);
+            BarLogic.DeleteBarLogic(bar);
             return View();
         }
     }
