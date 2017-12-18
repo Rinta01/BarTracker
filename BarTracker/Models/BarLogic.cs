@@ -59,12 +59,12 @@ namespace BarTracker.Models
             }
             return Fullbar;
         }
-        public static Bar FindBarById(int BarId)
+        public static Bar FindBarById(int? id)
         {
             Bar thatbar = new Bar();
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
-                thatbar = db.Bar.SingleOrDefault(x => x.BarId == BarId);
+                thatbar = db.Bar.SingleOrDefault(x => x.BarId == id);
             }
             return thatbar;
         }

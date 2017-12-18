@@ -44,15 +44,15 @@
         </div>
             </div>
     }   
-    <a class="amster" href="@Url.Action("BarList","Home",new {SearchCity = "Amsterdam" })">
+    <a class="amster" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Amsterdam" })">
         <img src="~/screenshots/амстер.png" />
     </a>
 
-    <a class="barcelona" href="@Url.Action("BarList","Home",new {SearchCity = "Barcelona" })">
+    <a class="barcelona" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Barcelona" })">
         <img src="~/screenshots/барселона.png" />
     </a>
 
-    <a class="berlin" href="@Url.Action("BarList","Home",new {SearchCity = "Berlin" })">
+    <a class="berlin" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Berlin" })">
         <img src="~/screenshots/берлин.png" />
     </a>
 
@@ -66,7 +66,7 @@
     </p>
         <center><label>OR YOU CAN SEARCH THE BAR</label></center>
         </form>
-    <form action="@Url.Action("BarSearch", "Home")">
+    <form action="@Url.Action("BarSearchByItem", "Home")">
         <p>
             <center><input type="submit" class="search1" value="Search" name="SearchBarBtn"></center>
             <center><input type="search" class="search" placeholder="Find your bar" name="SearchBar"></center>
@@ -74,10 +74,10 @@
     </form>
 
 
-    <a class="wellington" href="@Url.Action("BarList","Home",new {SearchCity = "Wellington" })">
+    <a class="wellington" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Wellington" })">
         <img src="~/screenshots/велингтон.png">
     </a>
-    <a class="dublin" href="@Url.Action("BarList","Home",new {SearchCity = "Dublin" })">
+    <a class="dublin" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Dublin" })">
         <img src="~/screenshots/дублин.png">
     </a>
     <a class="content1">

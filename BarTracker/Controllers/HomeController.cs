@@ -28,7 +28,7 @@ namespace BarTracker.Controllers
                 }
                 else
                 {
-                    return View(CurrentCityList);
+                    return View("BarList",CurrentCityList);
                 }
             }
             else
@@ -63,10 +63,10 @@ namespace BarTracker.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditBar(int BarId)
+        public ActionResult EditBar(int? id)
         {
-            BarLogic.FindBarById(BarId);
-            return View();
+           Bar b = BarLogic.FindBarById(id);
+            return View(b);
         }
         [HttpPost]
         public ActionResult EditBar(Bar bar)

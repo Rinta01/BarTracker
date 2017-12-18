@@ -17,11 +17,11 @@
                 <span class="label_bars">
                     <label class="label">Where to go in: </label>
                 </span>
-                <span class="sorting">
+         <!--   <span class="sorting">
                     <label class="label">Sorting: </label>
                     <button class="rating" onclick="location.href=@Url.Action("BarSorting","Home", new {id ="Rating"})">Rating</button>
                     <button class="category">Category</button>
-                </span>
+                </span> -->
 @if (User.Identity.IsAuthenticated)
 {
     <div>
@@ -75,7 +75,7 @@ else
                                 }
                                 else
                                 {
-                                    
+                                    <text>Not Rated</text>
                                 }
                             </td>
                             <td>
