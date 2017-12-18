@@ -8,8 +8,6 @@ using System.Web.Security;
 
 namespace BarTracker.Controllers
 {
-
-    
     public class MyAccountController : Controller
     {
         [HttpGet]

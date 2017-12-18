@@ -39,7 +39,10 @@ namespace BarTracker.Controllers
             if (SearchBar != "")
             {
                 var CurrentBar = BarLogic.SearchBarByItemLogic(SearchBar);
-                return View("BarDetails", CurrentBar);
+                if (CurrentBar != null)
+                    return View("BarDetails", CurrentBar);
+                else
+                    return View("Index");
             }
             else
                 return View("Index");
@@ -47,7 +50,12 @@ namespace BarTracker.Controllers
         
         public ActionResult BarDetails(Bar bar)
         {
-            return View(bar);
+            Bar newbar = new Bar();
+            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
+            {
+                newbar = db.Bar.Include(x => x.Rating).Include(y => y.Review).SingleOrDefault(z => z.BarName == bar.BarName);
+            }
+                return View(newbar);
         }
         [HttpGet]
         public ActionResult AddBar()

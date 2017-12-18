@@ -20,18 +20,17 @@
     {
         <div class="container">
             <a class="myprofile" href="@Url.Action("MyProfile","MyAccount")">
-                <img src="~/screenshots/user.png" />
+                <img src="screenshots/user.png" />
             </a>
-        </div>       
+        </div>
         <div class="container">
-                <a class=sign_in href="@Url.Action("SignOut","MyAccount")">
-                    <img src="~/screenshots/sign_out.png" />
-                </a>
+            <a class=sign_in href="@Url.Action("SignOut","MyAccount")">
+                <img src="screenshots/sign_out.png" />
+            </a>
         </div>
     }
     else
     {
-        <div>
         <div class="container">
             <a class=sign_in href="@Url.Action("Authorization","MyAccount")">
                 <img src="~/screenshots/sign_in.png" />
@@ -42,7 +41,6 @@
                 <img src="~/screenshots/sign_up.png" />
             </a>
         </div>
-            </div>
     }   
     <a class="amster" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Amsterdam" })">
         <img src="~/screenshots/амстер.png" />
@@ -61,28 +59,31 @@
     </div>
     <form action="@Url.Action("BarListByCity","Home")">
         <p>
-            <center><input type="search" class="search" placeholder="Find your city" name="SearchCity"></center>
-            <center><input type="submit" class="search1" value="Search" name="SearchCityBtn"></center>
+            <span><input type="search" class="search" placeholder="Find your city" name="SearchCity"></span>
+            <span><input type="submit" class="search1" value="Search" name="SearchCityBtn"></span>
     </p>
-        <center><label>OR YOU CAN SEARCH THE BAR</label></center>
         </form>
-    <form action="@Url.Action("BarSearchByItem", "Home")">
+    <form action="@Url.Action("BarListByItem", "Home")">
         <p>
-            <center><input type="submit" class="search1" value="Search" name="SearchBarBtn"></center>
-            <center><input type="search" class="search" placeholder="Find your bar" name="SearchBar"></center>
+            <div><label class="or_search">OR YOU CAN SEARCH THE BAR</label></div>
+            <span><input type="search" class="search" placeholder="Find your bar" name="SearchCity"></span>
+            <span><input type="submit" class="search1" value="Search" name="SearchBarBtn"></span>
         </p>
     </form>
 
-
-    <a class="wellington" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Wellington" })">
-        <img src="~/screenshots/велингтон.png">
-    </a>
-    <a class="dublin" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Dublin" })">
-        <img src="~/screenshots/дублин.png">
-    </a>
-    <a class="content1">
-        Or just click on the icon
-    </a>
+    <span>
+        <a class="wellington" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Wellington" })">
+            <img src="~/screenshots/велингтон.png">
+        </a>
+    </span>
+    <span>
+        <a class="dublin" href="@Url.Action("BarListByCity","Home",new {SearchCity = "Dublin" })">
+            <img src="~/screenshots/дублин.png">
+        </a>
+    </span>
+        <a class="content1">
+            Or just click on the icon
+        </a>
 </body>
 </html>
 
