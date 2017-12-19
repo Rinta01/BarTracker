@@ -33,9 +33,9 @@
                     </dt>
                     </dl>
                 </div>
-                    <div class="formыв-group">
+                    <div class="form-group">
                         @Html.LabelFor(model => model.ReviewContent, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        <div class="container">
                             @Html.EditorFor(model => model.ReviewContent, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.ReviewContent, "", new { @class = "text-danger" })
                         </div>
