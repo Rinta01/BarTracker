@@ -85,14 +85,15 @@ namespace BarTracker.Controllers
             return View("Index");
         }
         [HttpGet]
-        public ActionResult AddReview(string BarName)
+        public ActionResult AddReview(Bar bar)
         {
-            return View();
+            var needbar = BarLogic.SearchBarByItemLogic(bar.BarName);
+            return View(new Review { Bar = needbar });
         }
         [HttpPost]
-        public ActionResult AddReview(int BarId, string ReviewContent)
+        public ActionResult AddReview(Review rev, string ReviewContent)
         {
-            var barrev = BarLogic.AddReviewLogic(BarId, ReviewContent);
+            var barrev = BarLogic.AddReviewLogic(rev);
             return View("BarDetails", barrev);
         }
     }

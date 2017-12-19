@@ -70,14 +70,14 @@ namespace BarTracker.Models
             }
             return Fullbar;
         }
-        public static Bar AddReviewLogic(int id, string ReviewContent )
+        public static Bar AddReviewLogic(Review rev )
         {
             Bar barrev;
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
-                barrev = db.Bar.Include(x => x.Review).SingleOrDefault(x => x.BarId == id);
+                barrev = db.Bar.Include(x => x.Review).SingleOrDefault(x => x.BarId == rev.BarId);
                 var index = barrev.Review.Count + 1;
-                barrev.Review.SingleOrDefault().ReviewContent.Insert(index,ReviewContent);
+                barrev.Review.SingleOrDefault().ReviewContent.Insert(index,rev.ReviewContent);
             }
             return barrev;
         }
