@@ -107,3 +107,9 @@ input[type=search] {
     float: right;
     margin: 3% 1%;
 }
+.plus img {
+    width: 8%;
+    float: right;
+    margin-right: 18%;
+    margin-top: 10%;
+}

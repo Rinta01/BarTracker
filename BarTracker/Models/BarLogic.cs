@@ -28,20 +28,31 @@ namespace BarTracker.Models
             }
             return listBarsCurrentCity;
         }
+
         public static Bar SearchBarByItemLogic(string SearchBarByItem)
         {
             Bar SearchedBar = new Bar();
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
-                SearchedBar = db.Bar.SingleOrDefault(x => x.BarName == SearchBarByItem);
+                SearchedBar = db.Bar.Include(x => x.Rating).Include(y => y.Review).SingleOrDefault(x => x.BarName == SearchBarByItem);
             }
             return SearchedBar;
         }
-        public static void DeleteBarLogic(Bar bar)
+        public static Bar BarDetailsLogic(int? id)
+        {
+            Bar newbar = new Bar();
+            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
+            {
+                newbar = db.Bar.Include(x => x.Rating).Include(y => y.Review).SingleOrDefault(z => z.BarId == id);
+            }
+            return newbar;
+        }
+        public static void DeleteBarLogic(int? id)
         {
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
-                db.Bar.Remove(bar);
+                var delbar = db.Bar.SingleOrDefault(x => x.BarId == id);
+                db.Bar.Remove(delbar);
                 db.SaveChanges();
             }
         }
@@ -59,14 +70,16 @@ namespace BarTracker.Models
             }
             return Fullbar;
         }
-        public static Bar FindBarById(int? id)
+        public static Bar AddReviewLogic(int id, string ReviewContent )
         {
-            Bar thatbar = new Bar();
+            Bar barrev;
             using (BarTrackerDBEntities db = new BarTrackerDBEntities())
             {
-                thatbar = db.Bar.SingleOrDefault(x => x.BarId == id);
+                barrev = db.Bar.Include(x => x.Review).SingleOrDefault(x => x.BarId == id);
+                var index = barrev.Review.Count + 1;
+                barrev.Review.SingleOrDefault().ReviewContent.Insert(index,ReviewContent);
             }
-            return thatbar;
+            return barrev;
         }
 
     }

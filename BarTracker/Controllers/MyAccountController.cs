@@ -62,6 +62,7 @@ namespace BarTracker.Controllers
                 return View();
             }
         }
+        [Authorize]
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();

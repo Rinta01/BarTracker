@@ -1,0 +1,57 @@
+﻿@model BarTracker.Models.Review
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddReview</title>
+</head>
+<body>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Review</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="container">
+                <dl class="container">
+                     <dd>
+                        <div class="bar_name">
+                            @Html.DisplayFor(model => model.Bar.BarName)
+                        </div>
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Bar.BarName)
+                    </dt>
+                    </dl>
+                </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ReviewContent, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ReviewContent, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ReviewContent, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+            </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+</body>
+</html>

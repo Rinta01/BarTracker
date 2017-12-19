@@ -178,9 +178,9 @@
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Home\BarDetails1.cshtml" />
     <Content Include="Views\Home\AddBar.cshtml" />
     <Content Include="Views\Home\BarDetails.cshtml" />
+    <Content Include="Views\Home\AddReview.cshtml" />
     <None Include="Views\Home\BarList.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

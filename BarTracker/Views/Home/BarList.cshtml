@@ -17,26 +17,27 @@
                 <span class="label_bars">
                     <label class="label">Where to go in: </label>
                 </span>
-         <!--   <span class="sorting">
-                    <label class="label">Sorting: </label>
-                    <button class="rating" onclick="location.href=@Url.Action("BarSorting","Home", new {id ="Rating"})">Rating</button>
-                    <button class="category">Category</button>
-                </span> -->
 @if (User.Identity.IsAuthenticated)
-{
-    <div>
-                <a class="signin" href="@Url.Action("Authorize", "MyAccount")">
-                    <img src="~/screenshots/sign_in.png">
-                </a>
-        </div>
-}
-else
 {
     <div class="container">
         <a class=register href="@Url.Action("MyProfile","MyAccount")">
             <img src="~/screenshots/user.png" />
         </a>
     </div>
+}
+else
+{
+    <div>
+        <a class="signin" href="@Url.Action("Authorization", "MyAccount")">
+            <img src="~/screenshots/sign_in.png">
+        </a>
+    </div>
+}
+@if (User.Identity.IsAuthenticated)
+{
+                <a class="plus" href="@Url.Action("AddBar", "Home")">
+                    <img src="~/screenshots/plus.png" />
+                </a>
 }
             </div>
             <div class="list">
@@ -79,20 +80,26 @@ else
                                 }
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "EditBar", new { id = item.BarId }) |
-                                @Html.ActionLink("Details", "BarDetails", new { id = item.BarId }) |
-                                @Html.ActionLink("Delete", "DeleteBar", new { id = item.BarId }) |
+                                @Html.ActionLink("Details", "BarDetails", new { id = item.BarId })
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                                @Html.ActionLink("Edit", "EditBar", new { id = item.BarId }) 
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                     {
+                                @Html.ActionLink("Delete", "DeleteBar", new { id = item.BarId })
+                     }
+                     @if (User.Identity.IsAuthenticated)
+                     {
+                         @Html.ActionLink("Add Review", "AddReview", new { BarName = item.BarName })
+                     }
                             </td>
                         </tr>
                     }
 
                 </table>
-                <div class="comment_content">Good news for all of the handsome men out there, Door 74 has a clear no bothering policy. If you want to enjoy a pleasant evening without being interrogated by…</div>
+                <div class="comment_content">There's some text here hope you don't mind. Have a golly good day, Sir!</div>
             </div>
-            <a class="plus" href="@Url.Action("AddBar","Home")" >
-                <img src="~/screenshots/plus.png" />
-            </a>
-            
         </div>
     </body>
 </html>

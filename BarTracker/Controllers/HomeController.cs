@@ -48,14 +48,10 @@ namespace BarTracker.Controllers
                 return View("Index");
         }
         
-        public ActionResult BarDetails(Bar bar)
+        public ActionResult BarDetails(int? id)
         {
-            Bar newbar = new Bar();
-            using (BarTrackerDBEntities db = new BarTrackerDBEntities())
-            {
-                newbar = db.Bar.Include(x => x.Rating).Include(y => y.Review).SingleOrDefault(z => z.BarName == bar.BarName);
-            }
-                return View(newbar);
+            var newbar = BarLogic.BarDetailsLogic(id);
+            return View(newbar);
         }
         [HttpGet]
         public ActionResult AddBar()
@@ -73,7 +69,7 @@ namespace BarTracker.Controllers
         [HttpGet]
         public ActionResult EditBar(int? id)
         {
-           Bar b = BarLogic.FindBarById(id);
+           Bar b = BarLogic.BarDetailsLogic(id);
             return View(b);
         }
         [HttpPost]
@@ -83,10 +79,21 @@ namespace BarTracker.Controllers
             return View("BarDetails",bar);
         }
 
-        public ActionResult DeleteBar(Bar bar)
+        public ActionResult DeleteBar(int? id)
         {
-            BarLogic.DeleteBarLogic(bar);
+            BarLogic.DeleteBarLogic(id);
+            return View("Index");
+        }
+        [HttpGet]
+        public ActionResult AddReview(string BarName)
+        {
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddReview(int BarId, string ReviewContent)
+        {
+            var barrev = BarLogic.AddReviewLogic(BarId, ReviewContent);
+            return View("BarDetails", barrev);
         }
     }
 }

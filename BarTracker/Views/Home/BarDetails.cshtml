@@ -10,41 +10,90 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>BarDetails</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Raleway'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link rel="stylesheet" href="~/Content/bar.css">
 </head>
 <body>
     <div>
         <h4>Bar</h4>
         <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.BarName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.BarName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Category)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Category)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.City)
-            </dt>
-            
-            <dd>
-                @Html.DisplayFor(model => model.City)
-            </dd>
-    
-        </dl>
+        <div class="container">
+            <dl class="container">
+                <dd>
+                    <div class="bar_name">
+                        @Html.DisplayFor(model => model.BarName)
+                    </div>
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BarName)
+                </dt>
+
+                <dd>
+                    <div class="bar_name">
+                        @Html.DisplayFor(model => model.Category)
+                    </div>
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+
+                <dd>
+                    <div class="bar_name">
+                        @Html.DisplayFor(model => model.City)
+                    </div>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+
+                <dd>
+                    <div class="bar_name">
+                        @if (Model.Rating.Count == 0)
+                        { <text>Not Rated Yet</text> }
+                        else
+                        {
+                            <div class="text">
+                                @Html.DisplayFor(model => model.Rating.SingleOrDefault(x => x.BarId == model.BarId).RatingValue)/ 5
+                             </div>
+                                }
+                            </div>
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Rating.SingleOrDefault(x => x.BarId == model.BarId).RatingValue)
+                </dt>
+
+                <dd>
+                    <div class="container">
+                        @if (Model.Review.Count == 0)
+                        { <text>No Reviews Yet</text> }
+                        else
+                        {
+                    foreach (var item in Model.Review)
+                    {
+                        <div class="comment">
+                    @Html.DisplayFor(model => model.Review.SingleOrDefault(x => x.BarId == model.BarId).ReviewContent)
+                         </div>
+                    }
+                        }
+                    </div>
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Review.SingleOrDefault(x => x.BarId == model.BarId).ReviewContent)
+                </dt>
+            </dl>
+        </div>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.BarId }) |
-        @Html.ActionLink("Back to List", "Index")
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink("Edit", "EditBar", new { id = Model.BarId }) 
+}
+        @Html.ActionLink("Go Home", "Index")
     </p>
 </body>
 </html>
