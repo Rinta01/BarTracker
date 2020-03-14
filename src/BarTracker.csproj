@@ -143,7 +143,6 @@
     <Content Include="Models\BarTrackerModel.edmx.diagram">
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Models\BarTrackerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BarTrackerModel.edmx</DependentUpon>
@@ -173,10 +172,7 @@
     <Content Include="screenshots\токио.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Home\AddBar.cshtml" />
     <Content Include="Views\Home\BarDetails.cshtml" />
@@ -228,7 +224,6 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\MyAccount\Authorization.cshtml" />
     <Content Include="Views\MyAccount\Registration.cshtml" />
